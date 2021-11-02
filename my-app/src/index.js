@@ -3,37 +3,19 @@ import ReactDom from 'react-dom'
 import './index.css'
 // jsk rules
 //return single elements
-
-function Greeting() {
+//css
+import './index.css'
+import { books } from './books'
+import SpecificBook from './Book'
+import { greeting } from './testing/testing.js'
+function BookList() {
+  console.log(greeting)
   return (
-    <section>
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
+    <section className='booklist'>
+      {books.map((book) => {
+        return <SpecificBook key={book.id} book={book} />
+      })}
     </section>
   )
 }
-const Book = () => {
-  return (
-    <article>
-      <Image />
-      <Title />
-      <Author />
-    </article>
-  )
-}
-const Image = () => {
-  return (
-    <img src='https://m.media-amazon.com/images/I/81xE--f8K3L._AC_UY327_FMwebp_QL65_.jpg' />
-  )
-}
-const Title = () => <h1>this is maths book</h1>
-const Author = () => <h2>By A dass</h2>
-ReactDom.render(<Greeting />, document.getElementById('root'))
+ReactDom.render(<BookList />, document.getElementById('root'))
